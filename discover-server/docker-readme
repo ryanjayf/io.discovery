@@ -1,0 +1,33 @@
+#to build docker container image (OCI) please use below command
+docker image build -t ryanjayf/discover-server:v1 .
+
+#to push docker container image in docker hub, please use below command
+docker image push ryanjayf/discover-server:v1
+
+#to run docker container image locally
+docker container run -d --name discover-server -p 8761:8761 ryanjayf/discover-server:v1
+
+##troubleshooting / managing app 
+#list running docker container(s)
+docker ps
+#list running docker container(s) including stopped ones
+docker ps -a
+#to stop running docker container
+docker stop discover-server
+#to remove docker container
+docker rm discover-server
+#to stop and remove docker container
+docker rm -f discover-server
+#to inspect docker directly
+docker inspect discover-server
+#to verify logs inside the container
+docker logs discover-server
+#verify application accessibility from inside the container
+docker exec -it discover-server curl http://localhost:8761
+#to stop container
+docker container stop discover-server
+#to start container
+docker container start discover-server
+#to access the shell prompt of a running Docker container, use the following command:
+docker exec -it discover-server /bin/sh
+#CTRL+P+Q to exit without stopping the running container
