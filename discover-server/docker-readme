@@ -4,8 +4,11 @@ docker image build -t ryanjayf/discover-server:v1 .
 #to push docker container image in docker hub, please use below command
 docker image push ryanjayf/discover-server:v1
 
-#to run docker container image locally
-docker container run -d --name discover-server -p 8761:8761 ryanjayf/discover-server:v1
+#create docker network (if not yet created)
+docker network create my_network
+
+#to run docker container image locally in a network
+docker container run -d --name discover-server --network my_network -p 8761:8761 ryanjayf/discover-server:v1
 
 ##troubleshooting / managing app 
 #list running docker container(s)
